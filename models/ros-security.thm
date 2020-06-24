@@ -20,28 +20,29 @@
    <type name="LaserData"/>
    <type name="LidarNode"/>
    <type name="Publish"/>
-   <type name="RosMsg"/>
-   <type name="RosNode"/>
    <type name="Scan"/>
    <type name="ScanMsg"/>
    <type name="String"/>
    <type name="Subscribe"/>
    <type name="Time"/>
-   <type name="Topic"/>
    <type name="univ"/>
    <type name="VelMsg"/>
    <type name="Velocity"/>
    <type name="WheelNode"/>
    <type name="seq/Int"/>
-   <set name="$unknownWheelCommand_t" type="Time"/>
-   <set name="$unknownWheelCommand_v" type="Velocity"/>
+   <set name="$test_t" type="Time"/>
+   <set name="$test_v" type="Velocity"/>
 </node>
 
 <node color="Red">
    <type name="Attacker"/>
 </node>
 
-<node color="Yellow">
+<node hideunconnected="yes">
+   <type name="Topic"/>
+</node>
+
+<node hideunconnected="yes" color="Yellow">
    <type name="Data"/>
 </node>
 
@@ -56,7 +57,12 @@
 
 <node visible="no">
    <type name="Event"/>
+   <type name="RosNode"/>
    <type name="TO/Ord"/>
+</node>
+
+<node visible="no" hideunconnected="no">
+   <type name="RosMsg"/>
 </node>
 
 <node visible="yes">
@@ -67,10 +73,17 @@
    <type name="Process"/>
 </node>
 
+<node visible="yes" showlabel="no">
+   <set name="$_relevant&apos;" type="RosNode"/>
+</node>
+
+<node visible="yes" showlabel="no" label="">
+   <set name="$_relevant" type="RosMsg"/>
+</node>
+
 <edge attribute="no">
    <relation name="callee"> <type name="Event"/> <type name="Process"/> </relation>
    <relation name="caller"> <type name="Event"/> <type name="Process"/> </relation>
-   <relation name="topic"> <type name="Event"/> <type name="Topic"/> </relation>
 </edge>
 
 <edge visible="no" attribute="no" label="">
@@ -79,6 +92,7 @@
 
 <edge visible="no" attribute="yes">
    <relation name="subs"> <type name="DDS"/> <type name="Topic"/> <type name="RosNode"/> </relation>
+   <relation name="topic"> <type name="Event"/> <type name="Topic"/> </relation>
 </edge>
 
 </view>
